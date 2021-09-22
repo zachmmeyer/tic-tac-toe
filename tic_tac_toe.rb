@@ -12,3 +12,13 @@ class Board
          "#{@board[6]}|#{@board[7]}|#{@board[8]}\n"
   end
 end
+
+# Contains Game
+class Game
+  def self.start
+    @board = Board.new
+    @board.draw_board
+  end
+end
+
+Game.start
