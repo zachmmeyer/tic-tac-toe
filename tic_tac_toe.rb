@@ -15,8 +15,9 @@ end
 
 # Contains Game
 class Game
+  @board = Board.new
+
   def self.start
-    @board = Board.new
     @board.draw_board
   end
 end
