@@ -16,9 +16,10 @@ end
 # Contains Game
 class Game
   @board = Board.new
-
+  @game_name = "Tic-Tac-Toe"
   def self.start
-    @board.draw_board
+    system('clear')
+    puts @game_name
   end
 end
 
