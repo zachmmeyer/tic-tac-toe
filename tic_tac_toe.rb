@@ -29,7 +29,9 @@ end
 class Game
   @board = Board.new
   @game_name = 'Tic-Tac-Toe'
-  def self.start
+  @player01 = Player.new('Player 1', 'X')
+  @player02 = Player.new('Player 2', 'O')
+  @current_player = @player01
     system('clear')
     puts @game_name
     puts @board.draw_board
