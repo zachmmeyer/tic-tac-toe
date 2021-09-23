@@ -33,10 +33,15 @@ class Game
   @player02 = Player.new('Player 2', 'O')
   @current_player = @player01
 
+  def self.prompt_player
+    "#{@current_player.name} - choose your square: "
+  end
+
   def self.update_board
     system('clear')
     puts @game_name
     puts @board.draw_board
+    puts prompt_player
   end
 
   def self.start
