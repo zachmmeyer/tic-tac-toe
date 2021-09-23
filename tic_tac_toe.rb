@@ -37,11 +37,16 @@ class Game
     "#{@current_player.name} - choose your square: "
   end
 
+  def self.game_message
+    # TODO: Add logic to either prompt the player or display game over.
+    prompt_player
+  end
+
   def self.update_board
     system('clear')
     puts @game_name
     puts @board.draw_board
-    puts prompt_player
+    puts game_message
   end
 
   def self.start
