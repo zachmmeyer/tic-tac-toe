@@ -18,6 +18,7 @@ end
 # Contains Player
 class Player
   attr_reader :mark, :name
+  attr_accessor :choice
 
   def initialize(name, mark)
     @name = name
