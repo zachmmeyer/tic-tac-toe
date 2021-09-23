@@ -15,6 +15,16 @@ class Board
   end
 end
 
+# Contains Player
+class Player
+  attr_reader :mark, :name
+
+  def initialize(name, mark)
+    @name = name
+    @mark = mark
+  end
+end
+
 # Contains Game
 class Game
   @board = Board.new
