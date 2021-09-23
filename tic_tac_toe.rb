@@ -32,9 +32,15 @@ class Game
   @player01 = Player.new('Player 1', 'X')
   @player02 = Player.new('Player 2', 'O')
   @current_player = @player01
+
+  def self.update_board
     system('clear')
     puts @game_name
     puts @board.draw_board
+  end
+
+  def self.start
+    Game.update_board
   end
 end
 
