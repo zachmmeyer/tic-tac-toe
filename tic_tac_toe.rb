@@ -47,6 +47,7 @@ class Game
   def self.update_board
     system('clear')
     puts @game_name
+    puts "Active player: #{@current_player.name}"
     puts @board.draw_board
   end
 
