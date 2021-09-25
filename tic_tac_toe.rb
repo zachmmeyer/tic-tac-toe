@@ -68,24 +68,20 @@ class Game
     prompt_succeed
   end
 
-  def self.game_message
-    if @game_active
-      prompt_player
-    else
-      puts "#{current_player} won!"
-    end
+  def self.message
+    @game_active ? "Active player: #{@current_player.name}" : "#{current_player} won!"
   end
 
   def self.update_board
     system('clear')
     puts @game_name
-    puts "Active player: #{@current_player.name}"
+    puts message
     puts @board.draw_board
   end
 
   def self.next_turn
     update_board
-    puts game_message
+    prompt_player
   end
 
   def self.start
