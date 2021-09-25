@@ -2,6 +2,8 @@
 
 # Contains Tic Tac Toe Board
 class Board
+  attr_accessor :board
+
   def initialize
     @board = Array.new(9) { |i| (i + 1).to_s }
   end
@@ -34,9 +36,36 @@ class Game
   @player02 = Player.new('Player 2', 'O')
   @current_player = @player01
   @game_active = true
+  @prompt_good = false
+  @prompt_failed = false
+
+  def self.switch_player
+    @current_player = if @current_player == @player01
+                        @player02
+                      else
+                        @player01
+                      end
+  end
+
+  def self.prompt_succeed
+    @prompt_good = false
+    @prompt_failed = false
+    switch_player
+    next_turn
+  end
+
+  def self.prompt_failure
+    @prompt_failed = true
+    update_board
+  end
 
   def self.prompt_player
-    "#{@current_player.name} - choose your square: "
+    until @prompt_good
+      puts "Please pick a remaining number\n" if @prompt_failed
+      @current_player.choice = gets.chomp
+      @board.board.include?(@current_player.choice) ? @prompt_good = true : prompt_failure
+    end
+    prompt_succeed
   end
 
   def self.game_message
