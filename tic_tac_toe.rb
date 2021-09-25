@@ -40,8 +40,11 @@ class Game
   end
 
   def self.game_message
-    # TODO: Add logic to either prompt the player or display game over.
-    prompt_player
+    if @game_active
+      prompt_player
+    else
+      puts "#{current_player} won!"
+    end
   end
 
   def self.update_board
