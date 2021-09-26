@@ -8,3 +8,4 @@ AllCops:
     - !ruby/regexp /old_and_unused\.rb$/
     - 'Gemfile'
     - 'Gemfile.lock'
+    - './spec/spec_helper.rb'
