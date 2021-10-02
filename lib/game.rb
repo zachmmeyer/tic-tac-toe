@@ -56,7 +56,7 @@ class Game
 
   def self.next_turn
     update_board
-    prompt_player
+    prompt_player if @game_active
   end
 
   def self.start
