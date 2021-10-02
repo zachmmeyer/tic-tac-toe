@@ -9,7 +9,7 @@ class Board
   end
 
   def initialize
-    @board = Array.new(9) { |i| i + 1 }
+    @board = Array.new(9) { |i| (i + 1).to_s }
   end
 
   def draw_board
