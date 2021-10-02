@@ -22,9 +22,16 @@ class Game
                       end
   end
 
+  def self.mark_space
+    @board.board.each_with_index do |number, index|
+      @board.board[index] = @current_player.mark if @current_player.choice == number
+    end
+  end
+
   def self.prompt_succeed
     @prompt_good = false
     @prompt_failed = false
+    mark_space
     switch_player
     next_turn
   end
