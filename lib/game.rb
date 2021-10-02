@@ -13,6 +13,25 @@ class Game
   @game_active = true
   @prompt_good = false
   @prompt_failed = false
+  @winning_lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ]
+
+  def self.check_for_winner
+    @winning_lines.each do |line|
+      if @board.board[line[0]] == @board.board[line[1]] && @board.board[line[0]] == @board.board[line[2]]
+        @winner_player = @current_player.name
+        @game_active = false
+      end
+    end
+  end
 
   def self.switch_player
     @current_player = if @current_player == @player01
@@ -32,6 +51,7 @@ class Game
     @prompt_good = false
     @prompt_failed = false
     mark_space
+    check_for_winner
     switch_player
     next_turn
   end
@@ -51,7 +71,7 @@ class Game
   end
 
   def self.message
-    @game_active ? "Active player: #{@current_player.name}" : "#{current_player} won!"
+    @game_active ? "Active player: #{@current_player.name}" : "#{@winner_player} won!"
   end
 
   def self.update_board
