@@ -13,6 +13,7 @@ class Game
   @game_active = true
   @prompt_good = false
   @prompt_failed = false
+  @turn_count = 0
   @winning_lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -23,6 +24,13 @@ class Game
     [0, 4, 8],
     [2, 4, 6]
   ]
+
+  def self.check_for_tie
+    return unless @turn_count == 9
+
+    @winner_player = 'Neither player'
+    @game_active = false
+  end
 
   def self.check_for_winner
     @winning_lines.each do |line|
@@ -52,6 +60,8 @@ class Game
     @prompt_failed = false
     mark_space
     check_for_winner
+    @turn_count += 1
+    check_for_tie
     switch_player
     next_turn
   end
